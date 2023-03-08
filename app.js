@@ -23,14 +23,18 @@ const albums={
 			document.getElementById('loading').style.display='none';
 			document.getElementById('album-band').innerText=item.band;
 			document.getElementById('album-text').innerText=item.album;
+			document.getElementById('album-year').innerText=`${item.year}`;
+			document.getElementById('album-genre').innerText=`${item.genre}`;
+			document.getElementById('album-label').innerText=`${item.label}`;
+			document.getElementById('album-description').innerText=`${item.description}`;
 			document.getElementById('btn-edit').setAttribute('href',`edit.html?index=${index}`);
 			document.getElementById('btn-review').setAttribute('href',`review.html?index=${index}`);
-							
+	
 			let deleteButton=document.getElementById('btn-delete');
 			deleteButton.addEventListener('click',function(){
 				database.delete(albums.documentID,index);
 			});
-
+	
 			// loop through reviews array and create new HTML element for each review
 			let reviewsDiv = document.getElementById('reviews');
 			if (item.reviews) {
@@ -47,7 +51,11 @@ const albums={
 		document.querySelector('form').addEventListener('submit',function(e){
 			e.preventDefault();
 			let band=document.querySelector('form input[name=band]');
-			let album=document.querySelector('form textarea[name=album]');
+			let album=document.querySelector('form input[name=album]');
+			let genre=document.querySelector('form input[name=genre]');
+			let year=document.querySelector('form input[name=year]');
+			let label=document.querySelector('form input[name=label]');
+			let description=document.querySelector('form textarea[name=description]');
 			let review = {
 				"name":"",
 				"review":""
@@ -55,11 +63,16 @@ const albums={
 			let newAlbum={
 				band:band.value,
 				album:album.value,
+				genre:genre.value,
+				year:year.value,
+				label:label.value,
+				description:description.value,
 				review:review.value
 			}
 			database.create(albums.documentID,newAlbum);
 		});
-	},
+	}
+,
 	update:function(index){
 		database.detail(albums.documentID,index,function(item){
 			document.getElementById('loading').style.display='none';
@@ -94,6 +107,10 @@ const albums={
 			e.preventDefault();
 			let band = item.band
 			let album = item.album
+			let genre=item.genre;
+			let year=item.year;
+			let label=item.label;
+			let description=item.description;
 			let name = document.querySelector('form input[name=name]');
 			let review = document.querySelector('form textarea[name=review]');
 			let newReview = {
@@ -107,6 +124,10 @@ const albums={
 			let newAlbum = {
 			  band: band,
 			  album: album,
+			  genre: genre,
+			  year: year,
+			  label: label,
+			  description: description,
 			  reviews: item.reviews // Use the updated 'reviews' array in the new album object
 			}
 			database.update(albums.documentID, index, newAlbum);
