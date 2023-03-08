@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1>Detail</h1>
+<a href="index.html">Back to index</a> | <a id="btn-edit" href="">Edit quote</a> | <button type="button" id="btn-delete">Delete quote</button>
+<div id="loading">Loading quote...</div>
+<div id="quote">
+	<blockquote>
+		<em id="quote-text"></em>
+	</blockquote>
+	<span id="quote-author"></span>
+	<hr />
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="assets/api.js"></script>
+<script src="assets/database.js"></script>
+<script src="assets/getAllURLParams.js"></script>
+<script src="app.js"></script>
+<script>
+	quotes.detail(getAllUrlParams().index);
+</script>
+</body>
+</html>
