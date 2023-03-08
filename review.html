@@ -5,19 +5,26 @@
 <body>
 <h1>Edit</h1>
 <a href="index.html">Back to index</a>
-<div id="loading">Loading album...</div>
+<div id="loading">Loading...</div>
+<div id="album">
+	<blockquote>
+		<em id="album-text"></em>
+	</blockquote>
+	<span id="album-band"></span>
+	<hr />
+</div>
 <form>
 	<div>
-		<label>Band</label><br />
-		<input name="band" type="text" /><br />
+		<label>Name</label><br />
+		<input name="name" type="text" /><br />
 	</div>
 	<br />
 	<div>
-		<label>Text</label><br />
-		<textarea name="album" rows="5"></textarea><br />
+		<label>Review</label><br />
+		<textarea name="review" rows="5"></textarea><br />
 	</div>
 	<br />
-	<button type="submit">Edit album</button>
+	<button type="submit">Submit Review</button>
 </form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -26,7 +33,7 @@
 <script src="assets/getAllURLParams.js"></script>
 <script src="app.js"></script>
 <script>
-	albums.update(getAllUrlParams().index);
+	albums.review(getAllUrlParams().index);
 </script>
 </body>
 </html>

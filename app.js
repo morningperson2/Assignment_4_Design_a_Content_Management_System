@@ -1,63 +1,96 @@
-const quotes={
-	documentID:'1079835974602866688',
+const albums={
+	documentID:'1082851103720357888',
 	index:function(){
-		document.getElementById('quotes').innerHTML='Loading quotes, please wait...';
-		database.index(quotes.documentID,function(items){
-			document.getElementById('quotes').innerHTML='';
+		document.getElementById('albums').innerHTML='Loading albums, please wait...';
+		database.index(albums.documentID,function(items){
+			document.getElementById('albums').innerHTML='';
 			for(let i=0;i<items.length;i++){
-				let quote=items[i];
+				let album=items[i];
 				let el=document.createElement('div');
 				el.innerHTML=`<div>
 						<blockquote>
-							<em><a href="detail.html?index=${i}">${quote.quote}</a></em>
+							<em><a href="detail.html?index=${i}">${album.album}</a></em>
 						</blockquote>
-						${quote.author}
+						${album.band}
 						<hr />
 					</div>`;
-				document.getElementById('quotes').append(el);
+				document.getElementById('albums').append(el);
 			}
 		});
 	},
 	detail:function(index){
-		database.detail(quotes.documentID,index,function(item){
+		database.detail(albums.documentID,index,function(item){
 			document.getElementById('loading').style.display='none';
-			document.getElementById('quote-author').innerText=item.author;
-			document.getElementById('quote-text').innerText=item.quote;
+			document.getElementById('album-band').innerText=item.band;
+			document.getElementById('album-text').innerText=item.album;
 			document.getElementById('btn-edit').setAttribute('href',`edit.html?index=${index}`);
+			document.getElementById('btn-review').setAttribute('href',`review.html?index=${index}`);
 							
 			let deleteButton=document.getElementById('btn-delete');
 			deleteButton.addEventListener('click',function(){
-				database.delete(quotes.documentID,index);
+				database.delete(albums.documentID,index);
 			});
 		});
 	},
 	create:function(){
 		document.querySelector('form').addEventListener('submit',function(e){
 			e.preventDefault();
-			let author=document.querySelector('form input[name=author]');
-			let quote=document.querySelector('form textarea[name=quote]');
-			let newQuote={
-				author:author.value,
-				quote:quote.value
+			let band=document.querySelector('form input[name=band]');
+			let album=document.querySelector('form textarea[name=album]');
+			let review = {
+				"name":"",
+				"review":""
 			}
-			database.create(quotes.documentID,newQuote);
+			let newAlbum={
+				band:band.value,
+				album:album.value,
+				review:review.value
+			}
+			database.create(albums.documentID,newAlbum);
 		});
 	},
 	update:function(index){
-		database.detail(quotes.documentID,index,function(item){
+		database.detail(albums.documentID,index,function(item){
 			document.getElementById('loading').style.display='none';
-			document.querySelector('form input[name=author]').value=item.author;
-			document.querySelector('form textarea[name=quote]').value=item.quote;
+			document.querySelector('form input[name=band]').value=item.band;
+			document.querySelector('form textarea[name=album]').value=item.album;
 			
 			document.querySelector('form').addEventListener('submit',function(e){
 				e.preventDefault();
-				let author=document.querySelector('form input[name=author]');
-				let quote=document.querySelector('form textarea[name=quote]');
-				let newQuote={
-					author:author.value,
-					quote:quote.value
+				let band=document.querySelector('form input[name=band]');
+				let album=document.querySelector('form textarea[name=album]');
+				let newAlbum={
+					band:band.value,
+					album:album.value
 				}
-				database.update(quotes.documentID,index,newQuote);
+				database.update(albums.documentID,index,newAlbum);
+			});
+		});
+	},
+	review:function(index){
+		database.detail(albums.documentID,index,function(item){
+			document.getElementById('loading').style.display='none';
+			document.getElementById('album-band').innerText=item.band;
+			document.getElementById('album-text').innerText=item.album;
+			document.querySelector('form input[name=name]').value=item.review.name;
+			document.querySelector('form textarea[name=review]').value=item.review.text;
+			
+			document.querySelector('form').addEventListener('submit',function(e){
+				e.preventDefault();
+				let band=document.querySelector('form input[name=band]');
+				let album=document.querySelector('form textarea[name=album]');
+				let name=document.querySelector('form input[name=name]');
+				let review=document.querySelector('form textarea[name=review]');
+				let newReview={
+					name:name.value,
+					review:review.value
+				}
+				let newAlbum={
+					band:band.value,
+					album:album.value,
+					review:newReview.value
+				}
+				database.update(albums.documentID,index,newAlbum);
 			});
 		});
 	}
