@@ -7,12 +7,18 @@
 <a href="index.html">Back to index</a> | <a id="btn-edit" href="">Edit album</a> | <a id="btn-review" href="">Write Review</a> | <button type="button" id="btn-delete">Delete album</button>
 <div id="loading">Loading album...</div>
 <div id="album">
-	<blockquote>
-		<em id="album-text"></em>
-	</blockquote>
-	<span id="album-band"></span>
-	<hr />
+    
+	<p><strong>Album: </strong><span id="album-text"></span></p>
+    <p><strong>Band: </strong><span id="album-band"></span></p>
+    <p><strong>Genre: </strong> <span id="album-genre"></span></p>
+    <p><strong>Year: </strong> <span id="album-year"></span></p>
+	<p><strong>Label: </strong> <span id="album-label"></span></p>
+    <p><strong>Description: </strong> <span id="album-description"></span></p>
+    <hr />
 </div>
+
+<h2>Reviews</h2>
+<div id="reviews"></div> <!-- new div for reviews -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="assets/api.js"></script>
