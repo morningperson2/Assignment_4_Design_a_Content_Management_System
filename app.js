@@ -4,17 +4,27 @@ const albums={
 		document.getElementById('albums').innerHTML='Loading albums, please wait...';
 		database.index(albums.documentID,function(items){
 			document.getElementById('albums').innerHTML='';
-			for(let i=0;i<items.length;i++){
-				let album=items[i];
-				let el=document.createElement('div');
-				el.innerHTML=`<div>
-						<blockquote>
-							<em><a href="detail.html?index=${i}">${album.album}</a></em>
+			for(let i=0;i<items.length;i+=2){
+				console.log(i);
+				let albumEven = items[i];
+				let even = document.createElement('div');
+				even.style.backgroundColor='#FF4365';
+				even.innerHTML =`<blockquote>
+							<a href="detail.html?index=${i}">${albumEven.album}</a>
 						</blockquote>
-						${album.band}
-						<hr />
-					</div>`;
-				document.getElementById('albums').append(el);
+						${albumEven.band}`;
+				document.getElementById('albums').append(even);
+
+				let x = i + 1;
+				console.log(x);
+				let albumOdd = items[x];
+				let odd = document.createElement('div');
+				odd.style.backgroundColor='#00D9C0';
+				odd.innerHTML =`<blockquote>
+							<em><a href="detail.html?index=${i}">${albumOdd.album}</a></em>
+						</blockquote>
+						${albumOdd.band}`;
+				document.getElementById('albums').append(odd);
 			}
 		});
 	},

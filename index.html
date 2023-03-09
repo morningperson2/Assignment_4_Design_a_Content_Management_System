@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <link rel="stylesheet" href="assets/css/Main.css" type="text/css">
+
+    <style>
+
+    </style>
+    <title>Album content system</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/music.png">
 </head>
-<body>
-<h1>Index</h1>
-<a href="create.html">Add a new quote</a>
-<div id="albums">
+<body class="khaki">
+<div class="makeFlex makeKarla justifyCenter">
+    <h1>Album content system</h1>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="assets/api.js"></script>
-<script src="assets/database.js"></script>
-<script src="app.js"></script>
-<script>
-	albums.index();
-</script>
+
+<a href="create.html">Add a new quote</a>
+<div class="makeFlex makeKarla oxfordBlue" style="width: 100%">
+    <div id="albums" style="width: 100%">
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/api.js"></script>
+    <script src="assets/database.js"></script>
+    <script src="appSandbox.js"></script>
+    <script>
+        albums.index();
+    </script>
+</div>
+
 </body>
 </html>
