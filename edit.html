@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/x-icon" href="assets/images/music.png">
+	<title>Edit an Album</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/Main.css" type="text/css">
 </head>
-<body>
-<h1>Edit</h1>
-<a href="index.html">Back to index</a>
-<div id="loading">Loading album...</div>
-<form>
-	<div>
-		<label>Band</label><br />
-		<input name="band" type="text" /><br />
+<body class="khaki">
+	<div class="col-xs-1 text-center">
+		<div>
+			<h1 class="makeKarla">Edit</h1>
+			<hr>
+		</div>
+		<div>
+			<a href="index.html">Back to index</a>
+		</div>
+		<div id="loading">Loading album...</div>
+		<form>
+			<div>
+				<label>Band</label><br />
+				<input name="band" type="text" /><br />
+			</div>
+			<br />
+			<div>
+				<label>Text</label><br />
+				<textarea name="album" rows="5"></textarea><br />
+			</div>
+			<br />
+			<button type="submit">Edit album</button>
+		</form>
 	</div>
-	<br />
-	<div>
-		<label>Text</label><br />
-		<textarea name="album" rows="5"></textarea><br />
-	</div>
-	<br />
-	<button type="submit">Edit album</button>
-</form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="assets/api.js"></script>

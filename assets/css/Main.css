@@ -40,6 +40,14 @@
 .makeKarla {
     font-family: Karla;
 }
+
+.white{
+    color: white;
+}
+
+.removehyperlink{
+    text-decoration: none;
+}
 /* a */
 a, a:hover, a:focus, a:active {
     text-decoration: none;

@@ -1,7 +1,7 @@
 const albums={
     documentID:'1082851103720357888',
     index:function(){
-        document.getElementById('albums').innerHTML='Loading albums, please wait...';
+        document.getElementById('albums').innerHTML='<p class="white">Loading albums, please wait...</p>';
         database.index(albums.documentID,function(items){
             document.getElementById('albums').innerHTML='';
             for(let i=0;i<items.length;i+=2){
@@ -10,9 +10,9 @@ const albums={
                 let even = document.createElement('div');
                 even.style.backgroundColor='#FF4365';
                 even.innerHTML =`<blockquote>
-							<a href="detail.html?index=${i}">${albumEven.album}</a>
+							<a href="detail.html?index=${i}"><text style="color:black">${albumEven.album}</text></a>
 						</blockquote>
-						${albumEven.band}`;
+						<em>${albumEven.band}</em>`;
                 document.getElementById('albums').append(even);
 
                 let x = i + 1;
@@ -21,9 +21,9 @@ const albums={
                 let odd = document.createElement('div');
                 odd.style.backgroundColor='#00D9C0';
                 odd.innerHTML =`<blockquote>
-							<em><a href="detail.html?index=${i}">${albumOdd.album}</a></em>
+							<a href="detail.html?index=${i}"><text style="color:black">${albumOdd.album}</text></a>
 						</blockquote>
-						${albumOdd.band}`;
+						<em>${albumOdd.band}</em>`;
                 document.getElementById('albums').append(odd);
             }
         });
