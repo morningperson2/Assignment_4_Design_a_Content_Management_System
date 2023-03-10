@@ -4,27 +4,23 @@ const albums={
 		document.getElementById('albums').innerHTML='Loading albums, please wait...';
 		database.index(albums.documentID,function(items){
 			document.getElementById('albums').innerHTML='';
-			for(let i=0;i<items.length;i+=2){
+			for(let i=0;i<items.length;i++){
 				console.log(i);
-				let albumEven = items[i];
-				let even = document.createElement('div');
-				even.style.backgroundColor='#FF4365';
-				even.innerHTML =`<blockquote>
-							<a href="detail.html?index=${i}">${albumEven.album}</a>
-						</blockquote>
-						${albumEven.band}`;
-				document.getElementById('albums').append(even);
+				let item = document.createElement('div');
+				
+				if(i%2 == 0){
+					item.style.backgroundColor='#FF4365';
+				}
+				else{
+					item.style.backgroundColor='#00D9C0';
+				}
 
-				let x = i + 1;
-				console.log(x);
-				let albumOdd = items[x];
-				let odd = document.createElement('div');
-				odd.style.backgroundColor='#00D9C0';
-				odd.innerHTML =`<blockquote>
-							<em><a href="detail.html?index=${i}">${albumOdd.album}</a></em>
+				item.innerHTML =`<blockquote>
+							<em><a href="detail.html?index=${i}">${items[i].album}</a></em>
 						</blockquote>
-						${albumOdd.band}`;
-				document.getElementById('albums').append(odd);
+						${items[i].band}`;
+					document.getElementById('albums').append(item);
+				
 			}
 		});
 	},
