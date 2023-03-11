@@ -16,7 +16,7 @@ const albums={
 				}
 
 				item.innerHTML =`<blockquote>
-							<em><a href="detail.html?index=${i}">${items[i].album}</a></em>
+							<em><a href="detail.html?index=${i}"><text style="color:black">${items[i].album}</a></em>
 						</blockquote>
 						${items[i].band}`;
 					document.getElementById('albums').append(item);
