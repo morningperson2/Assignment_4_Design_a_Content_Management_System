@@ -1,5 +1,5 @@
 const api={
-	endpoint:'https://jsonblob.com/api/jsonBlob/',
+	endpoint:'http://127.0.0.1:8080/api/',
 	GET:function(documentID,callback){
 		axios.get(`${api.endpoint}${documentID}`,{}).then(function(response){
 			callback(response);

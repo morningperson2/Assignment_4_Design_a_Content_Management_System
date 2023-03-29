@@ -1,5 +1,5 @@
 const albums={
-	documentID:'1082851103720357888',
+	documentID:'data',
 	index:function(){
 		document.getElementById('albums').innerHTML='Loading albums, please wait...';
 		database.index(albums.documentID,function(items){
